@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class='wrapper'>
         <form class="form">
             <div>
                 <input type="text" v-model="search">

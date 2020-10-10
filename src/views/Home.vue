@@ -1,18 +1,18 @@
 <template>
-    <div>
+    <div class="wrapper">
         <h1>Home</h1>
-        <div>{{ getNum }}</div>
-        <button>Increment</button>
 
-        <ul>
-            <li 
-                class="list-item"  
-                :class="currentPage > 0 ? 'animate' : ''"
-                v-for="(item, index) in getUsers" 
-                :key="index">
-                {{ item.title }}
-            </li>
-        </ul>
+        <transition name="fade" mode="out-in">
+            <ul class="list">
+                <li 
+                    class="list-item"  
+                    :class="currentPage > 0 ? 'animate' : ''"
+                    v-for="(item, index) in getUsers" 
+                    :key="index">
+                    {{ item.title }}
+                </li>
+            </ul>
+        </transition>
         
         <Pagination 
             :dataLength="dataLength" 
@@ -40,9 +40,6 @@ export default {
     },
 
     computed: {
-        getNum() {
-            return this.$store.getters.getNum
-        },
 
         getUsers() {
             return this.$store.getters.getUsers
@@ -61,15 +58,25 @@ export default {
         }
     },
 
+    watch: {
+        
+    },
+
     created() {
-        this.$store.dispatch("getUsers")
+        this.$store.dispatch('getUsers')
     }
 }
 </script>
 
 <style scoped>
-    ul {
+    .list {
         list-style-type: none;
+        transition: all 400ms;
+        opacity: 1;
+    }
+
+    .list.active {
+        opacity: 0;
     }
 
     .list-item {

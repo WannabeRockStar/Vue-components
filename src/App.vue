@@ -6,7 +6,9 @@
       <router-link to="/swiper">Swiper</router-link>
       <router-link to="/filters">Filters</router-link>
     </header>
-    <router-view data-aos="fade" data-aos-delay="600" data-aos-duration="400" />
+    <transition name="fade" mode="out-in">
+        <router-view />
+    </transition>
   </div>
 </template>
 
@@ -26,11 +28,25 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    background: #222;
   }
 
   header a {
     margin-right: 1rem;
     text-decoration: none;
+    color: #33b972;
+  }
+
+  .fade-enter-active,
+  .fade-leave-active {
+    transition-duration: 0.5s;
+    transition-property: opacity;
+    transition-timing-function: ease;
+  }
+
+  .fade-enter,
+  .fade-leave-active {
+    opacity: 0
   }
 
 </style>
