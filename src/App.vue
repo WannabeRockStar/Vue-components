@@ -5,6 +5,8 @@
       <router-link to="/table">Table</router-link>
       <router-link to="/swiper">Swiper</router-link>
       <router-link to="/filters">Filters</router-link>
+      <router-link to="/multi">Multi</router-link>
+      <router-link to="/Images">Gallery</router-link>
     </header>
     <transition name="fade" mode="out-in">
         <router-view />
